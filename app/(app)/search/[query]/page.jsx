@@ -1,4 +1,3 @@
-"use server"
 import Post from "@/components/widgets/post";
 import { getSearch } from "@/services/search";
 
