@@ -1,5 +1,5 @@
 import Post from "@/components/widgets/post";
-import { getSearch } from "@/services/search";
+// import { getSearch } from "@/services/search";
 
 export default async function Page({ params }) {
    // const search = getSearch({ q: params.query });
