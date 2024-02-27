@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 fa3167afb32029ac5d739be90a2b28f2f83ffc8a Nurullah-Nergiz <developer@nurullah.aleeas.com> 1707138552 +0300	branch: Created from HEAD
+fa3167afb32029ac5d739be90a2b28f2f83ffc8a 2646225ef174f34c976097dae4b992d809a1593f Nurullah-Nergiz <nurullah.devs@gmail.com> 1707245687 +0300	commit: user page added
+2646225ef174f34c976097dae4b992d809a1593f c66109133897d1e283f8d9a5822fb5f1c8066c88 Nurullah-Nergiz <nurullah.devs@gmail.com> 1708291488 +0300	commit: Update New Layout: app and auth layouts
+c66109133897d1e283f8d9a5822fb5f1c8066c88 cd13f7fde1725698f08cee77980155d31df555ae Nurullah-Nergiz <nurullah.devs@gmail.com> 1709062865 +0300	commit: Ui Update:post detail component
+cd13f7fde1725698f08cee77980155d31df555ae 6f948694c09a34f628df3c4c3217112c33069c9a Nurullah-Nergiz <nurullah.devs@gmail.com> 1709062882 +0300	commit: Redux setup
