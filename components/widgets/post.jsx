@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Avatar } from "./avatar";
 
-export default function Post() {
+export default function Post({ post }) {
    return (
       <div className="p-4 flex flex-col gap-4 bg-white shadow shadow-tertiary rounded-2xl overflow-hidden">
          <header className="flex flex-col gap-4">
             <Avatar
                userAvatar="https://picsum.photos/64/64"
-               userName="Mustafa Vural"
+               userName={`${post?.author.firstName} ${post?.author.lastName}`}
                subTitle="mustafa-vural"
                fallowViable={true}>
                <details>
@@ -17,10 +17,7 @@ export default function Post() {
             </Avatar>
          </header>
          <main className=" flex-1 flex flex-col gap-2">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod
-            temporibus at, harum unde sequi fugiat maiores illum repellendus
-            tempore, est voluptatibus dolorem totam ipsum. Excepturi voluptatem
-            nihil deserunt quia optio.
+            {post?.content}
             <img
                src="https://picsum.photos/720/405"
                // src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*DUigJ7aQ_CFSOuKCklMOow.gif"
