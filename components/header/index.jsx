@@ -7,7 +7,7 @@ export const Header = () => {
       subTitle: "nurullah-nergiz",
    };
    return (
-      <header className="h-20 pr-2 flex items-center justify-between relative">
+      <header className="h-20 px-8 -mx-7 bg-gray-50 flex items-center justify-between top-0 sticky">
          <section className="flex items-center gap-4">
             <div className="w-min whitespace-nowrap ">
                <button className="bx bx-chevron-left p-0 text-3xl disabled:text-secondary"></button>

@@ -7,9 +7,9 @@ export default function RootLayout({ children }) {
    return (
       <>
          <Nav />
-         <section className="w-full px-6  flex-1">
+         <section className="w-full px-8 flex-1">
             <Header />
-            <main>{children}</main>
+            <>{children}</>
          </section>
       </>
    );

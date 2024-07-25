@@ -7,7 +7,7 @@ import { WidgetVertical } from '@/components/widgets/vertical';
 export default function Home() {
    return (
       <>
-         <section className="mb-4 flex gap-4">
+         <main className="mb-4 flex gap-4">
             <div className="max-w-screen-xl flex-1 mx-auto flex flex-col gap-4">
                <div className="w-full h-52 p-4 bg-secondary rounded-xl">
                   <h1 className="text-white">Title</h1>
@@ -24,7 +24,7 @@ export default function Home() {
                <Ad />
                <WidgetVertical />
             </aside>
-         </section>
+         </main>
       </>
    );
 }

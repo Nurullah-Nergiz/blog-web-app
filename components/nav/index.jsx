@@ -39,7 +39,7 @@ export const Nav = () => {
    /* console.log(router, router.pathname == "/" ? " text-primary" : "as"); */
    return (
       <nav className="max-w-60 relative">
-         <div className="max-h-screen w-min h-screen px-6 flex flex-col shadow-md shadow-gray-400 text-gray-500 sticky top-0 left-0 overflow-hidden">
+         <div className="max-h-screen w-min h-screen px-6 pr-8 flex flex-col shadow-md shadow-gray-400 text-gray-500 sticky top-0 left-0 overflow-hidden">
             <div className="">
                <b className="h-20 text-black flex items-center ">
                   logo
