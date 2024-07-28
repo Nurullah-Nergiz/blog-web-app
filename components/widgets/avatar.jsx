@@ -3,7 +3,6 @@ export const Avatar = ({
    userName,
    subTitle,
    children,
-   fallowViable,
 }) => {
    return (
       <section className="flex items-center justify-between">
@@ -19,14 +18,7 @@ export const Avatar = ({
             </span>
          </div>
          <div className="flex items-center gap-2">
-            {fallowViable ? (
-               <button className="px-2 py-1 bg-secondary text-white rounded-md">
-                  Fallow
-               </button>
-            ) : (
-               ""
-               )}
-               {children}
+            {children}
          </div>
       </section>
    );

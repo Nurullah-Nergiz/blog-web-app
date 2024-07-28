@@ -1,11 +1,13 @@
+"use client";
+import { useSelector } from "react-redux";
 import { Search } from "./search";
+import { Avatar } from "@/components/widgets/avatar";
+import Link  from "next/link";
 
 export const Header = () => {
-   const { userName, userAvatar, subTitle } = {
-      userAvatar: "https://picsum.photos/seed/picsum/64/64",
-      userName: "Nurullah Nergiz",
-      subTitle: "nurullah-nergiz",
-   };
+   const user = useSelector((state) => state.auth.user);
+   console.log(user);
+
    return (
       <header className="h-20 px-8 -mx-7 bg-gray-50 flex items-center justify-between top-0 sticky">
          <section className="flex items-center gap-4">
@@ -19,21 +21,21 @@ export const Header = () => {
          </section>
 
          <section className="flex items-center gap-4">
-            <button className="bx bx-message-rounded-dots text-secondary text-2xl "></button>
-            <button className="bx bx-bell text-secondary text-2xl "></button>
-            <div className="flex items-center gap-2">
-               <img
-                  src={userAvatar}
-                  className="w-10 h-10 p-[2px] rounded-full border-2 border-primary border-r-transparent border-b-transparent"
-                  alt="user avatar"
-               />
-               <span className="hidden md:block flex-1">
-                  <b className="text-sm whitespace-nowrap">{userName}</b>
-                  <p className="text-secondary text-xs whitespace-nowrap">
-                     @{subTitle}
-                  </p>
-               </span>
-            </div>
+            {user ? (
+               <>
+                  <button className="bx bx-message-rounded-dots text-secondary text-2xl "></button>
+                  <button className="bx bx-bell text-secondary text-2xl "></button>
+                  <Avatar
+                     userAvatar="https://picsum.photos/seed/picsum/64/64"
+                     userName={`${user.firstName} ${user.lastName}`}
+                     subTitle={user.userName}
+                  />
+               </>
+            ) : (
+               <>
+                  <Link href="auth/login">Login</Link>
+               </>
+            )}
          </section>
       </header>
    );
