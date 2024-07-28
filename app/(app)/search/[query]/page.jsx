@@ -17,14 +17,6 @@ export default function Page({ params }) {
          <h1 className="">Searching {params.query}</h1>
          <section className="flex gap-4">
             <main className="flex-1 flex flex-col gap-4">
-               {searchRes.posts?.map((post) => {
-                  return (
-                     <>
-                        <Post key={post._id} post={post} />
-                     </>
-                  );
-               })}
-
                {searchRes.users?.map((user) => {
                   return (
                      <>
@@ -34,6 +26,13 @@ export default function Page({ params }) {
                            userName={`${user?.firstName} ${user?.lastName}`}
                            subTitle="mustafa-vural"
                         />
+                     </>
+                  );
+               })}
+               {searchRes.posts?.map((post) => {
+                  return (
+                     <>
+                        <Post key={post._id} post={post} />
                      </>
                   );
                })}

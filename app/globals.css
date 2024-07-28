@@ -33,6 +33,7 @@ body {
    @apply relative;
 }
 .auth label > input + span {
+   transition: all 30ms;
    @apply px-2 bg-white block absolute left-10 z-10;
 }
 
