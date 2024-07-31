@@ -8,22 +8,28 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 export default function Page() {
-   const userName = useRef();
-   const password = useRef();
+   const [userName, password, errorMessage] = [useRef(), useRef(), useRef()];
    const dispatch = useDispatch();
    const router = useRouter();
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(userName.current.value, password.current.value);
+      console.log(errorMessage);
       loginServices({
          email: userName.current.value,
          password: password.current.value,
-      }).then((data) => {
-         console.log(data.data);
-         dispatch(loginSuccess(data.data));
-         router.push("/");
-      });
+      })
+         .then((data) => {
+            if (data.status === 200) {
+               dispatch(loginSuccess(data.data));
+               router.push("/");
+            } else {
+            }
+         })
+         .catch((err) => {
+            errorMessage.current.classList.add("block");
+            errorMessage.current.classList.remove("hidden");
+         });
    };
 
    return (
@@ -32,13 +38,17 @@ export default function Page() {
             <h1 className="text-4xl font-semibold">Log In</h1>
             <h2 className="text-sm">Please log in to use the app</h2>
          </header>
-         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+         <form onSubmit={handleSubmit} className="flex flex-col gap-4 relative">
+            <p className="text-primary hidden transition-all absolute -top-8 z-50" ref={errorMessage}>
+               You email or password is incorrect
+            </p>
             <label className="sliding px-3 py-2 bg-white flex items-center gap-2 border relative border-tertiary shadow shadow-tertiary rounded-2xl ">
                <i className="bx bx-user"></i>
                <input
                   type="text"
                   className="w-full !bg-transparent outline-none"
                   required
+                  autoFocus
                   ref={userName}
                />
                <span>UserName Or Email</span>
@@ -53,19 +63,22 @@ export default function Page() {
                />
                <span>Password</span>
             </label>
-            <div className="flex justify-between items-center text-xs">
+            <div className="flex justify-between items-center text-xs select-none">
                <label className=" flex items-center gap-2">
                   <input type="checkbox" />
                   <span className="whitespace-nowrap">Remember Me</span>
                </label>
                <Link href="./">Forgot Password?</Link>
             </div>
-            <PrimaryBtn type="submit" className="my-6">Login</PrimaryBtn>
+            <PrimaryBtn type="submit" className="my-6">
+               Login
+            </PrimaryBtn>
             {/* <br />  */}
-            <p className="text-sm text-center">
-               Don't Have As Account
-               <Link href="auth/register" className="ml-2 text-primary">
-                  Sing Up
+            <p className="text-sm text-center whitespace-nowrap select-none">
+               Don't Have As Account &nbsp;
+               <Link href="register" className="text-primary">
+                  Sing Up 
+                  Ui update: Error display message added
                </Link>
             </p>
          </form>
