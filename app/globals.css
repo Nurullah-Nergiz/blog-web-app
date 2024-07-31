@@ -21,6 +21,7 @@
 html,
 body {
    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.12) 0%, #fff 100%);
+   font-size: clamp(16px, 1vw, 32px);
 
    @apply w-full flex;
 }
@@ -29,15 +30,15 @@ body {
    @apply px-8;
 } */
 
-.auth label {
+.auth label.sliding{
    @apply relative;
 }
-.auth label > input + span {
+.auth label.sliding > input + span {
    transition: all 30ms;
    @apply px-2 bg-white block absolute left-10 z-10;
 }
 
-:is(.auth label > input:focus, .auth label > input:valid) + span {
+:is(.auth label.sliding> input:focus, .auth label.sliding> input:valid) + span {
    transform: translate(0, -50%);
    @apply top-0;
 }
