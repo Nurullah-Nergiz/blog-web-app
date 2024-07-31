@@ -78,7 +78,6 @@ export default function Page() {
                Don't Have As Account &nbsp;
                <Link href="register" className="text-primary">
                   Sing Up 
-                  Ui update: Error display message added
                </Link>
             </p>
          </form>
