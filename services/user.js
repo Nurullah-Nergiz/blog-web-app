@@ -1,12 +1,7 @@
-import axios from "axios";
-axios.defaults.baseURL = "http://16.171.33.188:8080/"
-
+import { userInstance } from "./index";
 
 /**
  *
- * @param {string} userName
- * @returns {Promise}
+ * @param {String} userName
  */
-export const getUserPosts = (userName) => {
- return axios.get(`users/${userName}/posts`)
-};
+export const getUser = (userName) => userInstance("users/" + userName);
