@@ -2,20 +2,29 @@
 import { useSelector } from "react-redux";
 import { Search } from "./search";
 import { Avatar } from "@/components/widgets/avatar";
-import Link  from "next/link";
+import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { closeNavbar, openNavbar } from "@/store/uiStore";
 
 export const Header = () => {
+   const dispatch = useDispatch();
+
    const user = useSelector((state) => state.auth.user);
-   // console.log(user);
+   const navbar =
+      useSelector((state) => state.ui.navbar) === true ? true : false;
 
    return (
       <header className="h-20 px-8 -mx-7 bg-gray-50 flex items-center justify-between top-0 sticky">
          <section className="flex items-center gap-4">
             <div className="w-min whitespace-nowrap ">
-               <button className="bx bx-chevron-left p-0 text-3xl disabled:text-secondary"></button>
                <button
-                  className="bx bx-chevron-right p-0 text-3xl disabled:text-secondary"
-                  disabled></button>
+                  className="bx bx-chevron-left p-0 text-3xl font-bold disabled:text-secondary disabled:font-normal"
+                  onClick={() => dispatch(closeNavbar())}
+                  disabled={!navbar}></button>
+               <button
+                  className="bx bx-chevron-right p-0 text-3xl font-bold disabled:text-secondary disabled:font-normal"
+                  onClick={() => dispatch(openNavbar())}
+                  disabled={navbar}></button>
             </div>
             <Search />
          </section>

@@ -1,17 +1,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
 
 /**
  *
- * @param {Object} param0
- * @param {String} param0.link
- * @param {String} param0.icon
- * @param {String} param0.text
+ * @param {Object} props
+ * @param {String} props.link
+ * @param {String} props.icon
+ * @param {String} props.text
  * @returns
  */
 export const ItemLink = ({ link, icon, text }) => {
    const pathName = usePathname();
    const active = pathName === link ? true : false;
+   const navbar =
+      useSelector((state) => state.ui.navbar) === true ? true : false;
 
    return (
       <li>
@@ -28,10 +31,10 @@ export const ItemLink = ({ link, icon, text }) => {
                   active ? icon.replace("bx-", "bxs-") + " text-primary" : icon
                }`}></i>
             <span
-               className={`${
-                  active ? "font-black" : ""
+               className={`${active ? "font-black" : ""} ${
+                  navbar ? "!block" : "!hidden"
                } xl:block hidden transition-all`}>
-               {text}
+               {text} <br />
             </span>
          </Link>
       </li>
