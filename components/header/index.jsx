@@ -6,7 +6,7 @@ import Link  from "next/link";
 
 export const Header = () => {
    const user = useSelector((state) => state.auth.user);
-   console.log(user);
+   // console.log(user);
 
    return (
       <header className="h-20 px-8 -mx-7 bg-gray-50 flex items-center justify-between top-0 sticky">
@@ -33,7 +33,7 @@ export const Header = () => {
                </>
             ) : (
                <>
-                  <Link href="auth/login">Login</Link>
+                  <Link href="/auth/login">Login</Link>
                </>
             )}
          </section>
