@@ -1,20 +1,15 @@
 
-# dependencies
-/node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+
 /.git/
 /.gits/
-
-# testing
-/coverage
-
+.vscode
+/node_modules
 # next.js
 /.next/
 /out/
-
-# production
 /build
 
 # misc
