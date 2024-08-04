@@ -1,7 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { Avatar } from "./avatar";
+import { CommentEditor } from "@/components/comment/editor";
+import { useState } from "react";
+import { CommentView } from "@/components/comment";
+import { BtnSecondary } from "@/components/btn";
 
 export default function Post({ post }) {
+   const [commentVisible, setCommentVisible] = useState(false);
+
    return (
       <div className="p-4 flex flex-col gap-4 bg-white shadow shadow-tertiary rounded-2xl overflow-hidden">
          <header className="flex flex-col gap-4">
@@ -25,12 +33,20 @@ export default function Post({ post }) {
                className=""
             />
          </main>
-         <footer className="flex items-center gap-4 text-2xl">
+         <footer className="flex items-baseline gap-4 text-2xl">
             <button className="bx bx-heart"></button>
-            <button className="bx bx-message-rounded"></button>
+            <button
+               className="bx bx-message-rounded"
+               onClick={() => setCommentVisible(!commentVisible)}></button>
+            <button className="bx bx-send"></button>
             <button className="bx bx-bookmark ml-auto"></button>
-            {/* <button className="bx bxs-bookmark-minus p-0"></button> */}
          </footer>
+         <details open={commentVisible}>
+            <summary className="!hidden">a</summary>
+            <CommentEditor />
+            <CommentView />
+         </details>
+         {/* <button className="bx bxs-bookmark-minus p-0"></button> */}
       </div>
    );
 }
