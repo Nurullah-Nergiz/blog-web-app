@@ -5,6 +5,7 @@ import { Avatar } from "@/components/widgets/avatar";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { closeNavbar, openNavbar } from "@/store/uiStore";
+import { BtnSecondary, PrimaryBtn } from "@/components/btn";
 
 export const Header = () => {
    const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export const Header = () => {
       useSelector((state) => state.ui.navbar) === true ? true : false;
 
    return (
-      <header className="h-20 px-8 -mx-7 bg-gray-50 flex items-center justify-between top-0 sticky">
+      <header className="h-20 px-8 -mx-7 bg-gray-50 flex items-center justify-between top-0 sticky after:w-full after:h-[2px] after:bg-gray-200 after:absolute after:bottom-0 after:-left-1">
          <section className="flex items-center gap-4">
             <div className="w-min whitespace-nowrap ">
                <button
@@ -42,7 +43,12 @@ export const Header = () => {
                </>
             ) : (
                <>
-                  <Link href="/auth/login">Login</Link>
+                  <Link href="/auth/login">
+                     <PrimaryBtn>Login</PrimaryBtn>
+                  </Link>
+                  <Link href="/auth/register">
+                     <BtnSecondary>Register</BtnSecondary>
+                  </Link>
                </>
             )}
          </section>

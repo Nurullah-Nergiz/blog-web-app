@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const headers = {
-   "Content-Type": "application/json",
-   // "Access"
+   // "Content-Type": "application/json",
+   // "Access" 
 };
 
 export const searchInstance = axios.create({

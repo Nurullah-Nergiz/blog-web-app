@@ -1,5 +1,5 @@
 "use client";
-import PrimaryBtn from "@/components/btn/primary";
+import {PrimaryBtn} from "@/components/btn";
 import { loginServices } from "@/services/auth";
 import { loginSuccess } from "@/store/authStore";
 import Link from "next/link";
@@ -14,12 +14,14 @@ export default function Page() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(errorMessage);
+      
       loginServices({
          email: userName.current.value,
          password: password.current.value,
       })
          .then((data) => {
+            console.log(data);
+            
             if (data.status === 200) {
                dispatch(loginSuccess(data.data));
                router.push("/");
@@ -27,6 +29,7 @@ export default function Page() {
             }
          })
          .catch((err) => {
+            console.log("err:", err)
             errorMessage.current.classList.add("block");
             errorMessage.current.classList.remove("hidden");
          });
