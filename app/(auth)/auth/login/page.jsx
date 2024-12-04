@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
+
 export default function Page() {
    const [userName, password, errorMessage] = [useRef(), useRef(), useRef()];
    const dispatch = useDispatch();
@@ -19,10 +20,10 @@ export default function Page() {
          email: userName.current.value,
          password: password.current.value,
       })
-         .then((data) => {
+         .then(async (data) => {
             console.log(data);
-            
             if (data.status === 200) {
+               
                dispatch(loginSuccess(data.data));
                router.push("/");
             } else {
