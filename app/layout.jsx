@@ -1,6 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "../components/provider/redux";
+import Cookies from "js-cookie";
+import { loginSuccess } from "@/store/authStore";
+import { useDispatch } from "react-redux";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,8 +16,7 @@ export default function RootLayout({ children }) {
    return (
       <html lang="en">
          <body className={inter.className}>
-            <ReduxProvider>
-               {children}</ReduxProvider>
+            <ReduxProvider>{children}</ReduxProvider>
          </body>
       </html>
    );

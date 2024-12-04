@@ -3,18 +3,22 @@
 import { Avatar } from "@/components/widgets/avatar";
 import Post from "@/components/widgets/post";
 import { getSearch } from "@/services/search";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 
 export default function Page({ params }) {
+   const { query } = use(params);
    const [searchRes, setSearch] = useState({});
    useEffect(() => {
-      getSearch({ q: params.query }).then((data) => {
+      console.clear();
+      console.log("query:", query);
+
+      getSearch({ q: query }).then((data) => {
          setSearch(data.data);
       });
-   }, [params.query]);
+   }, [query]);
    return (
       <>
-         <h1 className="">Searching {params.query}</h1>
+         <h1 className="">Searching {query}</h1>
          <section className="flex gap-4">
             <main className="flex-1 flex flex-col gap-4">
                {searchRes.users?.map((user) => {
