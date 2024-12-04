@@ -6,8 +6,10 @@ import { CommentEditor } from "@/components/comment/editor";
 import { useState } from "react";
 import { CommentView } from "@/components/comment";
 import { BtnSecondary } from "@/components/btn";
+import BtnLiked from '../btn/Liked';
+import BtnBookmarked from '../btn/Bookmarked';
 
-export default function Post({ post }) {
+export default function Post({ post={} }) {
    const [commentVisible, setCommentVisible] = useState(false);
 
    return (
@@ -34,17 +36,19 @@ export default function Post({ post }) {
             />
          </main>
          <footer className="flex items-baseline gap-4 text-2xl">
-            <button className="bx bx-heart"></button>
+            
+            <BtnLiked isLiked={post.isLiked ?? false} id={post._id} />
             <button
                className="bx bx-message-rounded"
                onClick={() => setCommentVisible(!commentVisible)}></button>
             <button className="bx bx-send"></button>
-            <button className="bx bx-bookmark ml-auto"></button>
+            <BtnBookmarked className="ml-auto" isBookmarked={post.isBookmarked ?? false} id={post._id} />
+            {/* <button className="bx bx-bookmark ml-auto"></button> */}
          </footer>
          <details open={commentVisible}>
             <summary className="!hidden">a</summary>
             <CommentEditor />
-            <CommentView />
+            <CommentView comments={post.comments} />
          </details>
          {/* <button className="bx bxs-bookmark-minus p-0"></button> */}
       </div>
