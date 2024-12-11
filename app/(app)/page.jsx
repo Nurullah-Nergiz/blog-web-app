@@ -13,8 +13,8 @@ export default function Home() {
 
    useEffect(() => {
       getPosts()
-         .then(({data}) => {            
-            console.log("data:", data)
+         .then(({ data }) => {
+            // console.log("data:", data);
             setPosts(data);
          })
          .catch((err) => {

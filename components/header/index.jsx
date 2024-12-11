@@ -5,12 +5,14 @@ import { Avatar } from "@/components/widgets/avatar";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { closeNavbar, openNavbar } from "@/store/uiStore";
-import { BtnSecondary, PrimaryBtn } from "@/components/btn";
+import { SecondaryBtn, PrimaryBtn } from "@/components/btn";
+import { useRouter } from "next/navigation";
 
 export const Header = () => {
+   const router = useRouter();
    const dispatch = useDispatch();
 
-   const user = useSelector((state) => state.auth.user);
+   const user = useSelector((state) => state.auth.user) || {};
    const navbar =
       useSelector((state) => state.ui.navbar) === true ? true : false;
 
@@ -31,7 +33,7 @@ export const Header = () => {
          </section>
 
          <section className="flex items-center gap-4">
-            {user ? (
+            {Object.keys(user).length > 0 && user.constructor === Object ? (
                <>
                   <button className="bx bx-message-rounded-dots text-secondary text-2xl "></button>
                   <button className="bx bx-bell text-secondary text-2xl "></button>
@@ -43,12 +45,14 @@ export const Header = () => {
                </>
             ) : (
                <>
-                  <Link href="/auth/login">
-                     <PrimaryBtn>Login</PrimaryBtn>
-                  </Link>
-                  <Link href="/auth/register">
-                     <BtnSecondary>Register</BtnSecondary>
-                  </Link>
+                  {/* <Link href="/auth/register"> */}
+                  <SecondaryBtn onClick={() => router.push("/auth/register")}>
+                     Register
+                  </SecondaryBtn>
+                  {/* </Link> */}
+                  {/* <Link href="/auth/login"> */}
+                  <PrimaryBtn onClick={() => router.push("/auth/login")}>Login</PrimaryBtn>
+                  {/* </Link> */}
                </>
             )}
          </section>

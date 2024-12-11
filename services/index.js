@@ -1,4 +1,4 @@
-import { getAuthenticationToken } from "@/utils/authenticationToken";
+import { getAuthenticationToken } from "@/utils/auth";
 import axios from "axios";
 
 const headers = {
@@ -44,7 +44,7 @@ export const bookmarkInstance = axios.create({
       },
       (err) => {
          if (err.status === 403) {
-            window.location.href = "/auth/login";
+            // window.location.href = "/auth/login";
          } else {
          }
       }

@@ -11,7 +11,7 @@ export const Avatar = ({
          <div className="flex items-center gap-2">
             <img
                src={userAvatar}
-               className="w-10 h-10 p-[2px] rounded-full border-2 border-primary border-r-transparent border-b-transparent"
+               className="w-12 h-12 p-[2px] rounded-full border-2 border-primary border-r-transparent border-b-transparent"
                alt="user avatar"
             />
             <span className="flex-1">

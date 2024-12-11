@@ -1,25 +1,30 @@
+"use client";
+
 import { twMerge } from "tailwind-merge";
 
-
-export  function PrimaryBtn({ children, className, ...attr }) {
+export function PrimaryBtn({ children, className = "", ...attr }) {
    return (
       <button
-         className={"px-3 py-2 border-primary border rounded-xl " + className}
-         {...attr}>
+         className={twMerge(
+            "h-110 px-8 py-1 bg-secondary rounded-md text-white shadow shadow-secondary inline-block",
+            className
+         )}
+         {...attr}
+      >
          {children}
       </button>
    );
 }
 
-
-export function BtnSecondary({ children, className, attr }) {
+export function SecondaryBtn({ children, className='', attr }) {
    return (
       <button
          className={twMerge(
-            "px-3 py-2 bg-secondary text-white rounded-xl ",
+            "h-110 px-8 py-1 border border-secondary rounded-md text-secondary",
             className
          )}
-         {...attr}>
+         {...attr}
+      >
          {children}
       </button>
    );

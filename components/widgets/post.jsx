@@ -5,10 +5,15 @@ import { Avatar } from "./avatar";
 import { CommentEditor } from "@/components/comment/editor";
 import { useState } from "react";
 import { CommentView } from "@/components/comment";
-import { BtnSecondary } from "@/components/btn";
 import BtnLiked from '../btn/Liked';
 import BtnBookmarked from '../btn/Bookmarked';
 
+
+/**
+ * 
+ * @param {Object} post 
+ * @returns React.Component
+ */
 export default function Post({ post={} }) {
    const [commentVisible, setCommentVisible] = useState(false);
 
@@ -32,6 +37,7 @@ export default function Post({ post={} }) {
                src="https://picsum.photos/720/405"
                // src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*DUigJ7aQ_CFSOuKCklMOow.gif"
                alt="title"
+               loading="lazy" 
                className=""
             />
          </main>

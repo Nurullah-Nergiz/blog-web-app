@@ -11,9 +11,11 @@ export const authSlice = createSlice({
    initialState,
    reducers: {
       loginSuccess: (state, action) => {
-         Cookies.set("user", JSON.stringify(action.payload));
-         state.isLoading = action.payload.authentication;
-         state.user = action.payload.user;
+         Cookies.set("user", JSON.stringify(action.payload), {
+            expires: 7,
+         });
+         state.isLoading = action.payload?.authentication;
+         state.user = action.payload?.user;
       },
       logout: (state, action) => {
          Cookies.set("user", null);
