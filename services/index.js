@@ -22,7 +22,7 @@ export const userInstance = axios.create({
    headers,
 });
 
-export const postInstance = axios.create({
+export const exploreInstance = axios.create({
    baseURL: process.env.NEXT_PUBLIC_BACKEND_HOSTNAME,
    headers,
 });
@@ -37,7 +37,7 @@ export const bookmarkInstance = axios.create({
    headers,
 });
 
-[searchInstance, authInstance, postInstance, postLikeInstance,bookmarkInstance].forEach((a) => {
+[searchInstance, authInstance, exploreInstance, postLikeInstance,bookmarkInstance].forEach((a) => {
    a.interceptors.response.use(
       (res) => {
          return res;

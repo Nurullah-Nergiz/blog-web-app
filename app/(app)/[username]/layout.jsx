@@ -1,45 +1,107 @@
+import { AvatarImg } from "@/components/widgets/avatar";
 import Link from "next/link";
+import { PrimaryBtn, SecondaryBtn } from "@/components/btn";
+import { RecommendedPeopleWidget } from "../../../components/widgets/RecommendedPeople";
+import FollowBtn from "@/components/btn/Follow";
+import { getUser } from "@/services/user";
+import { notFound } from "next/navigation";
+import { getAuthenticationUser } from "@/utils/auth";
 
-export default function Layout({ children }) {
-   const user = {
-      userAvatar: "https://picsum.photos/seed/picsum/64/64",
-      userName: "Nurullah Nergiz",
-      subTitle: "nurullah-nergiz",
-   };
+export default async function Layout({ children, params }) {
+   const { username } = await params;
+   const { status, data: user } = await getUser(username);
+
+   const isAuthenticatedUser = false;
+
+   // console.log(getAuthenticationUser());
+
+   if (user.length == 0 || status !== 200) {
+      notFound();
+   } else {
+   }
 
    return (
       <>
-         <header className="h-64">
-            <div className="flex items-center gap-4">
-               <img
-                  src={user?.userAvatar}
-                  className="w-48 h-48 p-1 rounded-full border-4 border-primary border-r-transparent border-b-transparent"
-                  alt="user avatar"
-               />
-               <div className="flex-1">
-                  <h1 className="text-2xl whitespace-nowrap">
-                     {user?.userName}&nbsp;(@{user?.subTitle})
-                  </h1>
-
-                  <p className="text-secondary whitespace-nowrap">
-                  </p>
-                  <p className="max-w-lg">
-                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam ipsam ab veritatis non, eaque fuga doloribus! Velit perspiciatis, temporibus inventore, quasi necessitatibus in deleniti vel dolor nisi earum, ullam sed.
-                  </p>
-               </div>
-            </div>
-         </header>
-         <nav className="my-4 flex items-center gap-4">
-            <Link href={`/users/${user?.subTitle}`}>Blogs</Link>
-            <Link href={`/users/${user?.subTitle}`}>Lists</Link>
-            <Link href={`/users/${user?.subTitle}`}>Home</Link>
-            <Link href={`/users/${user?.subTitle}`}>About</Link>
-         </nav>
-         <hr />
-         <section className="h-full mt-4 flex">
-            <main className="flex-1 ">{children}</main>
-            <aside className="max-w-80 w-full p-4">aside</aside>
-         </section>
+         <main className="flex-1">
+            <header className="">
+               {/* <section className="pt-[25%] bg-secondary relative">
+                  <img
+                     src="https://picsum.photos/600/200"
+                     alt=""
+                     className="w-full h-full absolute inset-0"
+                  />
+               </section> */}
+               <section className="py-4 flex flex-wrap gap-4 overflow-hidden">
+                  <AvatarImg className="w-1/3 h-1/3 max-w-40 max-h-40" />
+                  <section className="flex-1 flex flex-col gap-2">
+                     <div className="">
+                        <div className="flex items-center flex-wrap">
+                           <h1 className="inline-flex items-center gap-2 text-2xl font-bolds ">
+                              {user?.firstName} {user?.lastName}
+                              <i className="bx bxs-check-circle text-blue-500"></i>
+                           </h1>
+                           (<b className="text-base">@{user?.userName}</b>)
+                        </div>
+                        <div className="flex items-center gap-4">
+                           <span>
+                              <b>{user?.followingCount}</b> following
+                           </span>
+                           <span>
+                              <b>{user?.followersCount}</b> followers
+                           </span>
+                        </div>
+                     </div>
+                     <div className="flex items-center gap-4">
+                        <p className="whitespace-nowrap">
+                           <i className="bx bx-map"></i>
+                           Location
+                        </p>
+                        <p className="whitespace-nowrap">
+                           <i className="bx bx-link"></i>
+                           {user?.website}
+                           Website
+                        </p>
+                        <p className="whitespace-nowrap">
+                           <i className="bx bx-calendar"></i>
+                           {new Date(user?.createdAt).toLocaleDateString()}{" "}
+                           Joined
+                        </p>
+                     </div>
+                     <p className="h-10 text-sm overflow-hidden text-ellipsis">
+                        elit. Similique ex soluta, a dolores, consequuntur
+                        voluptatum at voluptates nihil non nobis explicabo
+                        molestiae quasi aperiam magni consequatur ipsam eaque
+                        eos mollitia.
+                        <br />
+                     </p>
+                     <div className="justify-items-end flex gap-4">
+                        {isAuthenticatedUser ? (
+                           <>a</>
+                        ) : (
+                           <>
+                              <SecondaryBtn>
+                                 <i className="bx bx-message"></i>
+                                 Message
+                              </SecondaryBtn>
+                              <FollowBtn />
+                           </>
+                        )}
+                     </div>
+                  </section>
+               </section>
+            </header>
+            <hr />
+            <br />
+            {children}
+         </main>
+         <aside className="max-w-80 w-full p-4 hidden lg:block">
+            <RecommendedPeopleWidget />
+         </aside>
       </>
    );
 }
+
+// export const metadata = {
+//    title: "Emegen",
+//    description: "Generated by create next app",
+// };

@@ -1,21 +1,19 @@
 import { getUserPosts } from "@/services/user";
-import Link from "next/link";
+import Post from "@/components/widgets/post";
 
-export default async function Page() {
-   // console.log((await getUserPosts("65b2543de059ab865c0eb763")).data);
-   // const userPosts = (await getUserPosts("65b2543de059ab865c0eb763")).data;
+export default async function Page({ params }) {
+   const { username } = await params;
+   const { status, data: posts } = await getUserPosts(username);
+   console.clear();
+   // console.log("file: page.jsx:7 => posts=>", posts);
 
    return (
       <section className="">
-         {/* {userPosts.map((post) => (
-            <Link
-               href={`/posts/${post?.slug}`}
-               key={post?._id}
-               className="h-80 block">
-               <b className="w">{post?.title}</b>
-               <p className="text-sm">{post?.description }</p>
-            </Link>
-         ))} */}
+         <h1 className="py-2">Posts</h1>
+         {posts?.map((post) => {
+            return <Post key={post._id} post={post} />;
+         })}
+         {/* <Post /> */}
       </section>
    );
 }

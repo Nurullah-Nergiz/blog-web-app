@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Avatar } from "@/components/widgets/avatar";
-import { WidgetVertical } from "@/components/widgets/vertical";
+import { WidgetVertical } from "@/components/widgets/RecommendedPeople";
 import { CommentEditor } from "@/components/comment/editor";
 import { CommentView } from "@/components/comment";
 import { Ad } from "@/components/Ad";

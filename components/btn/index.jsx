@@ -6,7 +6,7 @@ export function PrimaryBtn({ children, className = "", ...attr }) {
    return (
       <button
          className={twMerge(
-            "h-110 px-8 py-1 bg-secondary rounded-md text-white shadow shadow-secondary inline-block",
+            "px-6 py-1 bg-secondary rounded-md text-white shadow shadow-secondary inline-block",
             className
          )}
          {...attr}

@@ -2,9 +2,9 @@ import { authInstance } from "./index";
 
 /**
  * 
- * @param {Object} data
- * @param {String} data.email 
- * @param {String} data.password 
+ * @param {Object} user
+ * @param {String} user.email 
+ * @param {String} user.password 
  * @returns 
  */
 export const loginServices = (data) => authInstance("auth/login", {

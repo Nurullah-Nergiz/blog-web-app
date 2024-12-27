@@ -2,14 +2,15 @@
 
 import { Provider } from "react-redux";
 import { store } from "@/lib/store";
-import LoadData from "./load";
+import { PersistGate } from "redux-persist/integration/react";
 
 export default function ReduxProvider({ children }) {
    return (
       <>
          <Provider store={store}>
-            <LoadData />
-            {children}
+            {/* <PersistGate loading={null} persistor={persistor}> */}
+               {children}
+            {/* </PersistGate> */}
          </Provider>
       </>
    );

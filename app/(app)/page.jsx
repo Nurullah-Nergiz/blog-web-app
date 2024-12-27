@@ -4,45 +4,34 @@ import { Ad } from "@/components/Ad";
 import { Avatar } from "@/components/widgets/avatar";
 import Post from "@/components/widgets/post";
 import Link from "next/link";
-import { WidgetVertical } from "@/components/widgets/vertical";
+import { RecommendedPeopleWidget } from "@/components/widgets/RecommendedPeople";
+import { getExplore } from "@/services/explore";
 import { useEffect, useState } from "react";
-import { getPosts } from "@/services/post";
+import Posts from "@/components/post";
 
 export default function Home() {
    const [posts, setPosts] = useState([]);
-
    useEffect(() => {
-      getPosts()
-         .then(({ data }) => {
-            // console.log("data:", data);
-            setPosts(data);
-         })
-         .catch((err) => {
-            console.log(err);
-         });
+      getExplore().then(({ data, status }) => {
+         console.log(data, status);
+         setPosts(data);
+      });
    }, []);
+
    return (
       <>
-         <main className="mb-4 flex gap-4">
-            <div className="flex-1 mx-auto flex flex-col gap-4">
-               <div className="w-full h-52 p-4 bg-secondary rounded-xl">
+         <main className="w-full h-h-full mb-4 flex gap-4">
+            <div className="flex-1 mx-auto ">
+               <div className="w-full h-52 mb-4 p-4 bg-secondary rounded-xl">
                   new post
                </div>
-               <div className="w-full flex-1 flex flex-col gap-4 bg-white shadow shadow-tertiary rounded-2xl overflow-hidden">
-                  {posts.map((post) => {
-                     return <Post key={post._id} post={post} />;
-                  })}
-
-                  {/* </div> */}
-                  {/* 421.875 */}
-               </div>
-               {/* <div className="h-screen"></div> */}
+               <Posts posts={posts} />
             </div>
-            <aside className="max-w-80 pl-4 flex-1 flex flex-col gap-4">
-               <Ad />
-               <WidgetVertical />
-            </aside>
          </main>
+         <aside className=" max-w-xs pl-4 flex-1 flex flex-col gap-4">
+            <Ad />
+            <RecommendedPeopleWidget />
+         </aside>
       </>
    );
 }

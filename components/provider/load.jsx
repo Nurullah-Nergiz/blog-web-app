@@ -10,7 +10,7 @@ export default function ProviderLoad() {
    if (Object.keys(getUser).length > 0 && getUser.constructor === Object) {
       // console.log("getUser:", getUser)
       const dispatch = useDispatch();
-      dispatch(loginSuccess(getUser));
+      // dispatch(loginSuccess(getUser));
       const user = useSelector((state) => state.auth.user);
    }
 

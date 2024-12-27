@@ -7,5 +7,5 @@ export const getAuthenticationToken = () => {
 
 export const getAuthenticationUser = () => {
    const user = Cookies.get("user");
-   return user ? JSON.parse(user) : "";
+   return user ? JSON.parse(user)?.user : {};
 };
