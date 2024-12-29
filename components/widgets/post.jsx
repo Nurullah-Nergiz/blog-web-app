@@ -14,7 +14,7 @@ import BtnBookmarked from "../btn/Bookmarked";
  * @returns React.Component
  */
 export default function Post({ post = {} }) {
-   const w = Math.floor(Math.random() * 10) + 1;
+   const w = Math.floor(Math.random() * 10);
    const [commentVisible, setCommentVisible] = useState(false);
 
    return (
@@ -22,7 +22,7 @@ export default function Post({ post = {} }) {
          <header className="flex flex-col gap-4">
             <Avatar
                userAvatar={`https://picsum.photos/72${w}/40${w}`}
-               name={`${post?.author?.firstName} ${post?.author?.lastName}`}
+               name={`${post?.author?.name}`}
                userName="mustafa-vural"
                fallowViable={true}>
                <details>

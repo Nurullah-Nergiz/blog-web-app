@@ -1,5 +1,4 @@
 {
-  "exclude": [".next","_modules"],
   "compilerOptions": {
     "paths": {
       "@/*": ["./*"]

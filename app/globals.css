@@ -20,10 +20,15 @@
 
 html,
 body {
-   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.12) 0%, #fff 100%);
-   font-size: clamp(16px, 1vw, 32px);
+   background: rgba(0, 0, 0, 0.05);
+   font-size: clamp(12px, 1vw, 32px);
 
    @apply w-screen flex overflow-x-hidden;
+}
+
+body {
+   /* background: url("../img/layout.jpg") no-repeat; */
+   /* background-size: cover; */
 }
 
 body > section > section {
@@ -46,7 +51,7 @@ hr {
    @apply h-0.5 my-1 bg-current opacity-75;
 }
 
-nav>section>div>ul.General{
+nav > section > div > ul.General {
    @apply mt-auto;
 }
 

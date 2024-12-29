@@ -22,7 +22,7 @@ export const ItemLink = ({ link, icon, text, mode = "row" }) => {
          href={link}
          className={`${
             active
-               ? "before:w-1 before:bg-primary before:absolute before:top-0 before:bottom-0 before:-left-6"
+               ? "before:w-1 before:bg-primary before:absolute sm:before:top-0 before:bottom-0 sm:before:-left-10"
                : ""
          } mb-2 flex ${
             navbar === true ? "flex-row" : "flex-col"
@@ -30,12 +30,14 @@ export const ItemLink = ({ link, icon, text, mode = "row" }) => {
          title={text}>
          <i
             className={`${
-               active ? icon.replace("bx-", "bxs-") + " text-primary" : icon
-            }`}></i>
+               active ? icon.replace("bx-", "bxs-") + " sm:text-primary" : icon
+            } text-xl`}></i>
          <span
             className={`${
                active ? "font-black" : ""
-            } whitespace-nowrap xl:block transition-all ${navbar?"block":"!hidden"}`}>
+            }pr-8 whitespace-nowrap xl:block transition-all text-base ${
+               navbar ? "block" : "!hidden"
+            }`}>
             {text} <br />
          </span>
       </Link>

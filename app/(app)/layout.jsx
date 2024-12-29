@@ -21,7 +21,13 @@ export default function RootLayout({ children }) {
             link: "/post",
          },
       ],
-      List: [],
+      Dashboards: [
+         {
+            icon: "bx bx-bar-chart-alt-2",
+            text: "Analytics",
+            link: "/analytics",
+         },
+      ],
       General: [
          {
             icon: "bx bx-user",
@@ -30,7 +36,7 @@ export default function RootLayout({ children }) {
          },
          {
             icon: "bx bx-cog",
-            text: "Settings",
+            text: "Settings And Privacy",
             link: "/settings",
          },
          {
@@ -48,9 +54,9 @@ export default function RootLayout({ children }) {
    return (
       <>
          <Nav menu={menu} />
-         <section className="w-full flex-1">
+         <section className="w-full px-4 flex-1">
             <Header />
-            <section className="h-full px-8 flex gap-4">
+            <section className="h-full px-4 sm:px-8 flex flex-col sm:flex-row gap-4">
                {children}
             </section>
          </section>

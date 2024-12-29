@@ -1,51 +1,36 @@
-"use client";
-import { useSelector } from "react-redux";
+"use server";
 import { Search } from "./search";
 import { Avatar } from "@/components/widgets/avatar";
-import { useDispatch } from "react-redux";
-import { closeNavbar, openNavbar } from "@/store/uiStore";
+
 import { SecondaryBtn, PrimaryBtn } from "@/components/btn";
-import { usePathname, useRouter } from "next/navigation";
+import NavbarBtn from "./navbarBtn";
+import useAuthUser from "@/hooks/auth";
+// import { usePathname, useRouter } from "next/router";
 
-export const Header = () => {
-   const router = useRouter();
-   const pathname = usePathname();
-   const dispatch = useDispatch();
-
-   const user = useSelector((state) => state.auth.user) || {};
-   // console.log("user:", user);
-   const navbar =
-      useSelector((state) => state.ui.navbar) === true ? true : false;
+export const Header = async () => {
+   const user = await useAuthUser();
+   // const router = useRouter();
+   // const pathname = usePathname();
 
    return (
-      <header className="h-20 px-8 bg-gray-50 flex items-center justify-between ">
-         <section className="flex items-center gap-4">
-            <div className="w-min whitespace-nowrap ">
-               <button
-                  className="bx bx-chevron-left p-0 text-3xl font-bold disabled:text-secondary disabled:font-normal"
-                  onClick={() => dispatch(closeNavbar())}
-                  disabled={!navbar}></button>
-               <button
-                  className="bx bx-chevron-right p-0 text-3xl font-bold disabled:text-secondary disabled:font-normal"
-                  onClick={() => dispatch(openNavbar())}
-                  disabled={navbar}></button>
-            </div>
+      <header className="h-28 px-8 flex items-center justify-between ">
+         <section className="flex-1 flex items-center gap-4">
+            <NavbarBtn />
             <Search />
          </section>
 
-         <section className="flex items-center gap-4">
-            {false && Object.keys(user).length > 0 ? (
+         <section className="flex-1 flex items-center justify-end gap-4">
+            {Object.keys(user).length > 0 ? (
                <>
                   <button className="bx bx-message-rounded-dots text-secondary text-2xl "></button>
                   <button className="bx bx-bell text-secondary text-2xl "></button>
-                     {/* {"https://picsum.photos/seed/picsum/64/64"} */}
-                     {"nurullah-nergiz"}
-                     {/* {"Nurullah Nergiz"} */}
-                  {/* <Avatar
-                     userAvatar="https://picsum.photos/seed/picsum/64/64"
-                     userName={`${user.firstName} ${user.lastName}`}
-                     subTitle={user.userName}
-                  /> */}
+                  <Avatar
+                     userAvatar={user?.avatar}
+                     name={`${user.name} `}
+                     userName={user.userName}
+                     className="sm:flex hidden"
+                  />
+                  <i className="bx bx-search text-2xl sm:hidden"></i>
                </>
             ) : (
                <>

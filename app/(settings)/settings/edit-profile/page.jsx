@@ -1,16 +1,11 @@
+
 import { AvatarImg } from "@/components/widgets/avatar";
 import { SecondaryBtn } from "@/components/btn";
-import { useSelector } from "react-redux";
 import useAuthUser from "@/hooks/auth";
 import Input from "@/components/input";
 
 export default async function EditProfilePage() {
    const user = {};
-   async function authUser() {
-      "use server";
-      return await useAuthUser();
-   }
-   console.log(authUser());
 
    return (
       <>

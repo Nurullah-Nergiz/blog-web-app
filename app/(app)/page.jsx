@@ -12,7 +12,7 @@ import Posts from "@/components/post";
 export default function Home() {
    const [posts, setPosts] = useState([]);
    useEffect(() => {
-      getExplore().then(({ data, status }) => {
+      getExplore().then(({ data = [], status }) => {
          console.log(data, status);
          setPosts(data);
       });

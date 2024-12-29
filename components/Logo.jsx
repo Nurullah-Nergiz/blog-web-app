@@ -1,7 +1,3 @@
 export default function Logo({ children }) {
-   return (
-      <div className="">
-         <b className="h-20 text-black flex items-center ">logo</b>
-      </div>
-   );
+   return <b className="text-3xl text-black">logo</b>;
 }
