@@ -11,13 +11,18 @@ export const Avatar = ({
 }) => {
    return (
       <section
-         className={twMerge("flex items-center justify-between", className)}>
-         <Link href={`/${userName}`} className="flex items-center gap-2">
+         className={twMerge(
+            "flex items-center justify-between gap-2",
+            className
+         )}>
+         <Link href={`/@${userName}`} className="flex items-center gap-2">
             <AvatarImg src={userAvatar} alt={name} />
-            <span className="flex-1">
-               <b className="text-sm whitespace-nowrap">{name}</b>
-               <p className="text-xs whitespace-nowrap">@{userName}</p>
-            </span>
+            <div className="">
+               <b className="inline text-sm overflow-hidden whitespace-nowrap text-ellipsis">{name}</b>
+               <p className="text-xs whitespace-nowrap text-ellipsis">
+                  @{userName}
+               </p>
+            </div>
          </Link>
          {children}
       </section>

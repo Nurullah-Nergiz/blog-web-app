@@ -18,7 +18,7 @@ export default function Post({ post = {} }) {
    const [commentVisible, setCommentVisible] = useState(false);
 
    return (
-      <div className="mb-4 p-4 bg-white shadow shadow-tertiary rounded-2xl overflow-hidden">
+      <div className="mb-4 p-4 bg-white shadow shadow-tertiary rounded-2xl overflow-hidden ">
          <header className="flex flex-col gap-4">
             <Avatar
                userAvatar={`https://picsum.photos/72${w}/40${w}`}
@@ -31,7 +31,7 @@ export default function Post({ post = {} }) {
                </details>
             </Avatar>
          </header>
-         <main className=" flex-1 flex flex-col gap-2">
+         <main className=" my-4 flex flex-col gap-2">
             {post?.content}
             <img
                src={`https://picsum.photos/72${w}/40${w}`}

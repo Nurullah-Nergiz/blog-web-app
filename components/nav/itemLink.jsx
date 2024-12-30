@@ -35,7 +35,7 @@ export const ItemLink = ({ link, icon, text, mode = "row" }) => {
          <span
             className={`${
                active ? "font-black" : ""
-            }pr-8 whitespace-nowrap xl:block transition-all text-base ${
+            } whitespace-nowrap xl:block transition-all text-base ${
                navbar ? "block" : "!hidden"
             }`}>
             {text} <br />

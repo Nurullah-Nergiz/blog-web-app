@@ -28,7 +28,7 @@ export default function Home() {
                <Posts posts={posts} />
             </div>
          </main>
-         <aside className=" max-w-xs pl-4 flex-1 flex flex-col gap-4">
+         <aside className=" max-w-sm pl-4 flex-1 flex flex-col gap-4">
             <Ad />
             <RecommendedPeopleWidget />
          </aside>

@@ -16,13 +16,6 @@ export default function RootLayout({ children }) {
             link: "/bookmarks",
          },
          {
-            icon: "bx bx-bookmark",
-            text: "Post",
-            link: "/post",
-         },
-      ],
-      Dashboards: [
-         {
             icon: "bx bx-bar-chart-alt-2",
             text: "Analytics",
             link: "/analytics",
@@ -56,7 +49,7 @@ export default function RootLayout({ children }) {
          <Nav menu={menu} />
          <section className="w-full px-4 flex-1">
             <Header />
-            <section className="h-full px-4 sm:px-8 flex flex-col sm:flex-row gap-4">
+            <section className="h-full px-4 sm:px-8 flex flex-col lg:flex-row gap-4">
                {children}
             </section>
          </section>

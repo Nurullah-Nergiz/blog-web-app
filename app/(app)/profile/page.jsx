@@ -1,12 +1,8 @@
-"use client"
+import useAuthUser from "@/hooks/auth";
+import { redirect } from "next/navigation";
 
-import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
-
-
-export default function ProfilePage () {
-    const router = useRouter();
-    const user = useSelector((state) => state.auth.user) || {};
-    router.push(`/${user.userName ?? "auth/login"}`);
-    return (Link)
+export default async function ProfilePage() {
+   const user = await useAuthUser();
+   redirect(`/${user.userName ?? "auth/login"}`);
+   return null;
 }

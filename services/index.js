@@ -37,7 +37,14 @@ export const bookmarkInstance = axios.create({
    headers,
 });
 
-[searchInstance, authInstance, exploreInstance, postLikeInstance,bookmarkInstance].forEach((a) => {
+
+[
+   searchInstance,
+   authInstance,
+   exploreInstance,
+   postLikeInstance,
+   bookmarkInstance,
+].forEach((a) => {
    a.interceptors.response.use(
       (res) => {
          return res;
