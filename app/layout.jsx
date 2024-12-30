@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import ReduxProvider from "../components/provider/redux";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
    return (
       <html lang="en" className="scroll-smooth">
          <ReduxProvider>
-            <body className={inter.className}>{children}</body>
+            <Suspense>
+               <body className={inter.className}>{children}</body>
+            </Suspense>
          </ReduxProvider>
       </html>
    );
