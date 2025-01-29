@@ -12,23 +12,22 @@
 
 @media (prefers-color-scheme: dark) {
    :root {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 0, 0, 0;
-      --background-end-rgb: 0, 0, 0;
+      --secondary: "#717489";
+      --tertiary: "#f5f6ff";
+      --main: "#26262e";
    }
 }
 
-html,
-body {
-   background: rgba(0, 0, 0, 0.05);
+html {
    font-size: clamp(12px, 1vw, 32px);
 
-   @apply w-screen flex overflow-x-hidden;
+   @apply w-screen bg-[#f2f2f2] overflow-x-hidden dark:bg-[#1c1d22] dark:text-[#f5f6ff];
 }
 
 body {
    /* background: url("../img/layout.jpg") no-repeat; */
    /* background-size: cover; */
+   @apply flex;
 }
 
 body > section > section {
@@ -51,8 +50,16 @@ hr {
    @apply h-0.5 my-1 bg-current opacity-75;
 }
 
+a,.bx{
+   @apply text-black dark:text-white;
+}
+
 nav > section > div > ul.General {
    @apply mt-auto;
+}
+
+.bg-main{
+   @apply bg-[#f5f6ff] dark:bg-[#26262e];
 }
 
 .auth label.sliding {
@@ -61,6 +68,14 @@ nav > section > div > ul.General {
 .auth label.sliding > input + span {
    transition: all 30ms;
    @apply px-2 bg-white block absolute left-10 z-10;
+}
+
+label.theme-switch {
+   @apply border-2 border-transparent inline-block;
+}
+
+label.theme-switch:has(input[type="radio"]:checked) {
+   @apply border-primary;
 }
 
 :is(.auth label.sliding > input:focus, .auth label.sliding > input:valid)
