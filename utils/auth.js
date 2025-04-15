@@ -7,7 +7,5 @@ export const getAuthenticationToken = () => {
 
 export const getAuthenticationUser = () => {
    const user = Cookies.get("user");
-   console.log("file: auth.js:10 => user=>", user);
-   
-   return user ? (JSON.parse(user))?.user : {};
+   return user ? JSON.parse(user)?.user : {};
 };

@@ -30,7 +30,7 @@ export default function ThemePage({ children }) {
 
    const [currentTheme, setCurrentTheme] = useState(Cookies.get("theme"));
    const handleThemeChange = () => {
-      Cookies.set("theme", currentTheme);
+      Cookies.set("theme", currentTheme, { expires: 365 });
 
       document.documentElement.classList.remove("system", "light", "dark");
       document.documentElement.classList.add(currentTheme);

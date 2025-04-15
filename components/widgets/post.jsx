@@ -18,12 +18,12 @@ export default function Post({ post = {} }) {
    const [commentVisible, setCommentVisible] = useState(false);
 
    return (
-      <div className="mb-4 p-4 bg-white shadow shadow-tertiary rounded-2xl overflow-hidden ">
+      <div className="mb-4 main overflow-hidden ">
          <header className="flex flex-col gap-4">
             <Avatar
                userAvatar={`https://picsum.photos/72${w}/40${w}`}
-               name={`${post?.author?.name}`}
-               userName="mustafa-vural"
+               name={post?.author[0]?.name}
+               userName={post?.author[0]?.userName}
                fallowViable={true}>
                <details>
                   <summary className="bx bx-dots-vertical-rounded"></summary>
@@ -57,7 +57,7 @@ export default function Post({ post = {} }) {
          <details open={commentVisible}>
             <summary className="!hidden">a</summary>
             <CommentEditor />
-            {/* <CommentView comments={post.comments} /> */}
+            <CommentView comments={post.comments} />
          </details>
          {/* <button className="bx bxs-bookmark-minus p-0"></button> */}
       </div>

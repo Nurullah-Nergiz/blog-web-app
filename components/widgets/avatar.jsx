@@ -4,8 +4,8 @@ import { twMerge } from "tailwind-merge";
 
 export const Avatar = ({
    userAvatar = "https://picsum.photos/seed/picsum/64/64",
-   name = "Nurullah Nergiz",
-   userName = "nurullah-nergiz",
+   name = "",
+   userName = "",
    className = "",
    children,
 }) => {

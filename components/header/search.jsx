@@ -14,7 +14,7 @@ export const Search = () => {
    };
 
    return (
-      <div className="hidden sm:flex max-w-80 text-secondary relative">
+      <div className="search hidden sm:flex max-w-80 text-secondary relative">
          <label className="bx bx-search py-2 px-3 flex items-center gap-2 border border-current rounded-2xl text-2xl">
             <input
                type="text"
@@ -23,20 +23,21 @@ export const Search = () => {
                onKeyDown={submit}
                ref={searchRef}
                onChange={(e) => setSearch(e.target.value)}
-               autoFocus
             />
             {!search ? (
                <button className="bx bx-microphone"></button>
             ) : (
                <button
                   className="bx bx-x"
-                  onClick={() => setSearch("")}></button>
+                  onClick={() => {
+                     setSearch("");
+                     searchRef.current.blur();
+                  }}></button>
             )}
          </label>
          <ul
-            className={`${
-               !search ? "hidden" : "hidden"
-            } h-80 py-2 px-3 bg-white absolute -right-0 top-8 -left-0 border border-t-0 border-current rounded-b-xl`}>
+            // ${!search ? "hidden" : "hidden"}
+            className={` hidden max-h-80 main absolute -right-0 bottom-4 -left-0 translate-y-full border border-t-0 border-current rounded-b-xl !rounded-t-none`}>
             <hr />
             <li className="w">
                <i className="bx bx-search text-2xl"></i>a

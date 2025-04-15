@@ -50,7 +50,8 @@ hr {
    @apply h-0.5 my-1 bg-current opacity-75;
 }
 
-a,.bx{
+a,
+.bx button {
    @apply text-black dark:text-white;
 }
 
@@ -58,8 +59,20 @@ nav > section > div > ul.General {
    @apply mt-auto;
 }
 
-.bg-main{
+details summary {
+   @apply list-none cursor-pointer;
+}
+
+.bg-main {
    @apply bg-[#f5f6ff] dark:bg-[#26262e];
+}
+
+.main {
+   @apply p-4 bg-main rounded-xl shadow-md shadow-tertiary;
+}
+
+.input {
+   @apply w-full h-9 px-3 py-2 !bg-transparent border relative border-tertiary shadow shadow-tertiary rounded-2xl outline-none;
 }
 
 .auth label.sliding {
@@ -78,10 +91,26 @@ label.theme-switch:has(input[type="radio"]:checked) {
    @apply border-primary;
 }
 
+.search:has(input:focus) {
+   @apply bg-main;
+}
+
+.search:has(input:focus) > ul {
+   @apply block;
+}
+/* .search input:focus {
+   @apply text-primary;
+} */
+
 :is(.auth label.sliding > input:focus, .auth label.sliding > input:valid)
    + span {
    transform: translate(0, -50%);
    @apply top-0;
+}
+
+details.WidgetsPopup[open] + *,
+details.WidgetsPopup[open] > summary > span {
+   @apply !hidden;
 }
 
 @layer utilities {

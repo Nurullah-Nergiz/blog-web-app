@@ -5,7 +5,6 @@ import { useState } from "react";
 export default function Input({
    title = "",
    value = "",
-   onChange = (e) => {},
    ...props
 }) {
    const [inputValue, setInputValue] = useState("");

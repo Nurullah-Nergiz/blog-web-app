@@ -6,6 +6,7 @@ import { exploreInstance } from "./index";
  * @param {Number} limit 
  * @returns 
  */
-export const getExplore = (page = 0, limit = 5) => exploreInstance(`explore?page=${page}&limit=${limit}`);
+export const getExplore = (page = 0, limit = 5) => exploreInstance(`explore`);
+// export const getExplore = (page = 0, limit = 5) => exploreInstance(`explore?page=${page}&limit=${limit}`);
 
 export const getExploreByUser = () => exploreInstance(`explore/users`);

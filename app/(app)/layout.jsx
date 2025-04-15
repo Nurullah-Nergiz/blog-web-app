@@ -1,40 +1,43 @@
 import { Header } from "@/components/header/index";
 import { Nav } from "@/components/nav";
+import useAuthUser from "@/hooks/auth";
 
-export default function RootLayout({ children }) {
-   const isAuthenticated = true;
+export default async function RootLayout({ children }) {
+   const user = await useAuthUser();
+   const isAuthenticated = typeof user._id === "string" ? true : false;
+   
    const menu = {
       Menu: [
          {
             icon: "bx bx-home-alt-2",
-            text: "Browse",
+            text: "Göz atmak",
             link: "/",
          },
          {
             icon: "bx bx-bookmark",
-            text: "Bookmark",
+            text: "Yer işareti",
             link: "/bookmarks",
          },
          {
             icon: "bx bx-bar-chart-alt-2",
-            text: "Analytics",
+            text: "Analitik",
             link: "/analytics",
          },
       ],
-      General: [
+      Genel: [
          {
             icon: "bx bx-user",
-            text: "Profile",
-            link: "/profile",
+            text: "Profil",
+            link: `/@${user?.userName}`,
          },
          {
             icon: "bx bx-cog",
-            text: "Settings And Privacy",
+            text: "Ayarlar ve Gizlilik",
             link: "/settings",
          },
          {
             icon: "bx bx-log-out",
-            text: "Logout",
+            text: "Oturumu kapat",
             link: "auth/logout",
          },
       ],
@@ -49,7 +52,7 @@ export default function RootLayout({ children }) {
          <Nav menu={menu} />
          <section className="w-full px-4 flex-1">
             <Header />
-            <section className="h-full px-4 sm:px-8 flex flex-col lg:flex-row gap-4">
+            <section className="h-full sm:px-8 flex flex-col lg:flex-row gap-4">
                {children}
             </section>
          </section>

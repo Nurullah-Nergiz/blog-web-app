@@ -12,7 +12,12 @@ import Image from "next/image";
 export default async function Layout({ children, params }) {
    // console.clear();
 
-   const { username } = await params;
+   /**
+    * @type {String}
+    */
+   const { username = "" } = await params;
+   if (!username.startsWith("%40")) notFound();
+
    const { status, data: user } = await getUser(
       username.replace(/%40/g, "").trim()
    );
@@ -144,7 +149,7 @@ export default async function Layout({ children, params }) {
             </nav>
             {children}
          </section>
-         <aside className="max-w-sm w-full px-2 hiddens lg:block">
+         <aside className="min-w-96 w-1/3 px-2 hiddens lg:block">
             <Ad />
             {/* <Ad /> */}
             <RecommendedPeopleWidget />
@@ -155,11 +160,13 @@ export default async function Layout({ children, params }) {
 
 export async function generateMetadata({ params }) {
    const { username } = await params;
-   const { status, data: user } = await getUser(
-      username.replace(/%40/g, "").trim()
-   );
-   if (status == 200 || user.length !== 0)
-      return {
-         title: `${user?.name} (@${user?.userName}) - Emegen`,
-      };
+   if (username[0] !== "@") {
+      const { status, data: user } = await getUser(
+         username.replace(/%40/g, "").trim()
+      );
+      if (status == 200 || user.length !== 0)
+         return {
+            title: `${user?.name} (@${user?.userName}) - Emegen`,
+         };
+   }
 }

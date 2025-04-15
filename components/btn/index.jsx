@@ -2,29 +2,45 @@
 
 import { twMerge } from "tailwind-merge";
 
-export function PrimaryBtn({ children, className = "", ...attr }) {
+/**
+ *
+ * @param {String} param0.className
+ * @param {Function} param0.onClick
+ * @returns {import("react").ReactHTMLElement}
+ */
+export function PrimaryBtn({
+   children,
+   className = "",
+   onClick = () => {},
+   ...attr
+}) {
    return (
       <button
          className={twMerge(
-            "px-6 py-1 bg-secondary rounded-md text-white shadow shadow-secondary inline-block",
+            "px-6 py-1 bg-primary !text-current rounded-md text-white shadow shadow-secondary inline-block",
             className
          )}
-         {...attr}
-      >
+         onClick={() => onClick()}
+         {...attr}>
          {children}
       </button>
    );
 }
 
-export function SecondaryBtn({ children, className='', attr }) {
+export function SecondaryBtn({
+   children,
+   className = "",
+   onClick = () => {},
+   attr,
+}) {
    return (
       <button
          className={twMerge(
-            "h-110 px-8 py-1 border border-secondary rounded-md text-secondary",
+            "h-110 px-8 py-1 !text-current border border-primary rounded-md text-secondary",
             className
          )}
-         {...attr}
-      >
+         onClick={() => onClick()}
+         {...attr}>
          {children}
       </button>
    );

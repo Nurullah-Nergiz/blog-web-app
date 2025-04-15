@@ -3,13 +3,14 @@ import FollowBtn from "@/components/btn/Follow";
 import { Avatar } from "./avatar";
 import { getExploreByUser } from "@/services/explore";
 import { useEffect, useState } from "react";
+import Link  from "next/link";
 
 export const RecommendedPeopleWidget = () => {
    const [users, setUsers] = useState([]);
 
    useEffect(() => {
       getExploreByUser()
-         .then(({ data, status }) => {
+         .then(({ data = [], status }) => {
             setUsers(data);
          })
          .catch((err) => {
@@ -18,10 +19,13 @@ export const RecommendedPeopleWidget = () => {
    }, []);
 
    return (
-      <section className="p-4 bg-main flex flex-col gap-4 rounded-xl">
-         <div className="text-xl font-semibold flex items-center gap-2 whitespace-nowrap">
-            <i className="bx bx-trending-up text-primary"></i>
-            Recommended People
+      <section className="main flex flex-col gap-4">
+         <div className="flex items-center justify-between gap-4 whitespace-nowrap">
+            <span className="text-xl font-semibold">
+               <i className="bx bx-trending-up text-primary mr-2"></i>
+               Önerilen insanlar
+            </span>
+            <Link href="/explore-users" className="underline">Hepsini gör</Link>
          </div>
          {/* <div className="flex flex-col gap-2"> */}
          {users.map((user, key) => (
@@ -29,7 +33,7 @@ export const RecommendedPeopleWidget = () => {
                key={user?._id}
                userAvatar={`https://picsum.photos/6${key}`}
                name={user?.name}
-               userName={user?.username}>
+               userName={user?.userName}>
                <FollowBtn id={user?._id} className="p-2" />
             </Avatar>
          ))}

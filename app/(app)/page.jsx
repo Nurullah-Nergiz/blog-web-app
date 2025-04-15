@@ -13,23 +13,22 @@ export default function Home() {
    const [posts, setPosts] = useState([]);
    useEffect(() => {
       getExplore().then(({ data = [], status }) => {
-         console.log(data, status);
-         setPosts(data);
+         setPosts([...data]);
       });
    }, []);
 
    return (
       <>
          <main className="w-full h-h-full mb-4 flex gap-4">
-            <div className="flex-1 mx-auto ">
-               <div className="w-full h-52 mb-4 p-4 bg-secondary rounded-xl">
-                  new post
+            <section className="flex-1 mx-auto ">
+               <div className="w-full h-52 mb-4 p-4 bg-secondary text-white rounded-xl">
+                  Yeni gönderi ekle
                </div>
                <Posts posts={posts} />
-            </div>
+            </section>
          </main>
-         <aside className=" max-w-sm pl-4 flex-1 flex flex-col gap-4">
-            <Ad />
+         <aside className=" min-w-96 pl-4 w-1/3 flex flex-col gap-4">
+            {/* <Ad /> */}
             <RecommendedPeopleWidget />
          </aside>
       </>

@@ -1,6 +1,6 @@
 import { Avatar } from "../widgets/avatar";
 
-export const CommentView = ({ comments }) => {
+export const CommentView = ({ comments=[] }) => {
    return (
       <>
          {comments.map((comment) => (
