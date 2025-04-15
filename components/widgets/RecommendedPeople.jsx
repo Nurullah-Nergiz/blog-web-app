@@ -23,7 +23,7 @@ export const RecommendedPeopleWidget = () => {
          <div className="flex items-center justify-between gap-4 whitespace-nowrap">
             <span className="text-xl font-semibold">
                <i className="bx bx-trending-up text-primary mr-2"></i>
-               �nerilen insanlar
+               önerilen insanlar
             </span>
             <Link href="/explore-users" className="underline">Hepsini gör</Link>
          </div>
