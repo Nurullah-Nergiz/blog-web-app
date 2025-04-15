@@ -10,8 +10,8 @@ export const RecommendedPeopleWidget = () => {
 
    useEffect(() => {
       getExploreByUser()
-         .then(({ data = [], status }) => {
-            setUsers(data);
+         .then(({ data = [] }) => {
+            setUsers([...data]);
          })
          .catch((err) => {
             console.log(err);
@@ -23,7 +23,7 @@ export const RecommendedPeopleWidget = () => {
          <div className="flex items-center justify-between gap-4 whitespace-nowrap">
             <span className="text-xl font-semibold">
                <i className="bx bx-trending-up text-primary mr-2"></i>
-               Önerilen insanlar
+               �nerilen insanlar
             </span>
             <Link href="/explore-users" className="underline">Hepsini gör</Link>
          </div>
