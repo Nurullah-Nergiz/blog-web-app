@@ -3,15 +3,17 @@ import FollowBtn from "@/components/btn/Follow";
 import { Avatar } from "./avatar";
 import { getExploreByUser } from "@/services/explore";
 import { useEffect, useState } from "react";
-import Link  from "next/link";
+import Link from "next/link";
 
 export const RecommendedPeopleWidget = () => {
    const [users, setUsers] = useState([]);
 
    useEffect(() => {
       getExploreByUser()
-         .then(({ data = [] }) => {
-            setUsers([...data]);
+         .then(({ status, data = [] }) => {
+            if (status == 200) {
+               setUsers([...data]);
+            }
          })
          .catch((err) => {
             console.log(err);
@@ -25,7 +27,9 @@ export const RecommendedPeopleWidget = () => {
                <i className="bx bx-trending-up text-primary mr-2"></i>
                önerilen insanlar
             </span>
-            <Link href="/explore-users" className="underline">Hepsini gör</Link>
+            <Link href="/explore-users" className="underline">
+               Hepsini gör
+            </Link>
          </div>
          {/* <div className="flex flex-col gap-2"> */}
          {users.map((user, key) => (
