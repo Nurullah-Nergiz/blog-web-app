@@ -10,7 +10,10 @@ export const RecommendedPeopleWidget = () => {
 
    useEffect(() => {
       getExploreByUser()
-         .then(({ status, data = [] }) => {
+         .then(({data,status}) => {
+            // { status, data = [] }
+            // console.log(status, data);
+
             if (status == 200) {
                setUsers([...data]);
             }

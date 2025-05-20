@@ -54,9 +54,9 @@ export default function Post({ post = {} }) {
             />
             {/* <button className="bx bx-bookmark ml-auto"></button> */}
          </footer>
-         <details open={commentVisible}>
+         <details open={commentVisible} className="">
             <summary className="!hidden">a</summary>
-            <CommentEditor />
+            <CommentEditor postId={post._id} />
             <CommentView comments={post.comments} />
          </details>
          {/* <button className="bx bxs-bookmark-minus p-0"></button> */}

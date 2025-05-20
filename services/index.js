@@ -3,7 +3,7 @@ import axios from "axios";
 
 const headers = {
    "Content-Type": "application/json",
-   authentication: getAuthenticationToken(),
+   authorization: getAuthenticationToken(),
    // "Access"
 };
 
@@ -27,7 +27,17 @@ export const exploreInstance = axios.create({
    headers,
 });
 
+export const postInstance = axios.create({
+   baseURL: process.env.NEXT_PUBLIC_BACKEND_HOSTNAME,
+   headers,
+});
+
 export const postLikeInstance = axios.create({
+   baseURL: process.env.NEXT_PUBLIC_BACKEND_HOSTNAME,
+   headers,
+});
+
+export const postCommentInstance = axios.create({
    baseURL: process.env.NEXT_PUBLIC_BACKEND_HOSTNAME,
    headers,
 });
